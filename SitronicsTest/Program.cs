@@ -5,11 +5,14 @@ namespace SitronicsTest
 {
     internal class Program
     {
+        private const string Path = @"D:\Test";
+
         static void Main(string[] args)
         {
-            Dictionary<string, Bitmap> images = LoadImagesAsBitmaps(@"C:\Test");
+            Dictionary<string, Bitmap> images = LoadImagesAsBitmaps(Path);
             HitCheker hitCheker = new(640, 480, 10, 1);
 
+            Console.Write("Result:\n\t");
             foreach (KeyValuePair<string, Bitmap> pair in images)
             {
                 string filename = pair.Key;
