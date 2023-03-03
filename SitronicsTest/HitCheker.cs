@@ -13,9 +13,9 @@ namespace SitronicsTest
             Offset = offset;
         }
 
-        //Function search laser spot on bitmap and returns center coordinate of the spot or null value
-        //if there is no laser spot. To reduce the search time it is using the offset parameter, that
-        //defines distance between the points to be checked. 
+        //The function searches for a laser spot on a bitmap and returns the central coordinate of the spot
+        //or null value if there is no laser spot. To reduce the search time it is using the offset
+        //parameter, that defines distance between the points to be checked. 
         public Coordinate? FindHitCenter(Bitmap bitmap)
         {
             for (int x = 0; x < bitmap.Width; x += 1 + Offset)
@@ -83,7 +83,7 @@ namespace SitronicsTest
             return new(x, y);
         }
 
-        //Checks whether the pixel is marked by a laser
+        //Checks whether the pixel is marked by a laser.
         private bool IsPixelMarked(Bitmap bitmap, int x, int y)
         {
             Color color = bitmap.GetPixel(x, y);
