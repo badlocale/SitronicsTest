@@ -24,7 +24,7 @@ namespace SitronicsTest
                 {
                     if (IsPixelMarked(bitmap, x, y))
                     {
-                        IEnumerable<Coordinate> markeredPixels = FindMarkeredInArea(bitmap, x, y);
+                        IEnumerable<Coordinate> markeredPixels = FindMarkedInArea(bitmap, x, y);
 
                         return CalculateCentralCoordinate(markeredPixels);
                     }
@@ -36,7 +36,7 @@ namespace SitronicsTest
 
         //Finds the marked pixels in the area around the point on the bitmap. Search area size depends
         //on the padding parameter.
-        private IEnumerable<Coordinate> FindMarkeredInArea(Bitmap bitmap, int x, int y)
+        private IEnumerable<Coordinate> FindMarkedInArea(Bitmap bitmap, int x, int y)
         {
             List<Coordinate> markedPixels = new();
 
