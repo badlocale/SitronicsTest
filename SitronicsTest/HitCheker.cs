@@ -2,14 +2,14 @@
 
 namespace SitronicsTest
 {
-    public class HitCheker
+    public class HitChecker
     {
         private readonly int Width;
         private readonly int Height;
         private readonly int Padding;
         private readonly int Offset;
 
-        public HitCheker(int width, int height, int padding, int offset)
+        public HitChecker(int width, int height, int padding, int offset)
         {
             Width = width;
             Height = height;
@@ -30,7 +30,7 @@ namespace SitronicsTest
                     {
                         IEnumerable<Coordinate> markeredPixels = FindMarkeredInArea(bitmap, x, y);
 
-                        return CalculateCenterCoordinate(markeredPixels);
+                        return CalculateCentralCoordinate(markeredPixels);
                     }
                 }
             }
@@ -65,7 +65,7 @@ namespace SitronicsTest
         }
 
         //Finds the central coordinate of the coordinate collection.
-        private Coordinate CalculateCenterCoordinate(IEnumerable<Coordinate> coordinates)
+        private Coordinate CalculateCentralCoordinate(IEnumerable<Coordinate> coordinates)
         {
             int n = coordinates.Count();
             int x = 0;
