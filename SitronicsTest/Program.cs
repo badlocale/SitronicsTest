@@ -10,7 +10,7 @@ namespace SitronicsTest
         static void Main(string[] args)
         {
             Dictionary<string, Bitmap> images = LoadImagesAsBitmaps(Path);
-            HitChecker hitCheker = new(640, 480, 10, 1);
+            HitChecker hitCheker = new(10, 1);
 
             Console.Write("Result:\n\t");
             foreach (KeyValuePair<string, Bitmap> pair in images)

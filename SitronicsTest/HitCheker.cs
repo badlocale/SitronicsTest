@@ -4,15 +4,11 @@ namespace SitronicsTest
 {
     public class HitChecker
     {
-        private readonly int Width;
-        private readonly int Height;
         private readonly int Padding;
         private readonly int Offset;
 
-        public HitChecker(int width, int height, int padding, int offset)
+        public HitChecker(int padding, int offset)
         {
-            Width = width;
-            Height = height;
             Padding = padding;
             Offset = offset;
         }
@@ -22,9 +18,9 @@ namespace SitronicsTest
         //defines distance between the points to be checked. 
         public Coordinate? FindHitCenter(Bitmap bitmap)
         {
-            for (int x = 0; x < Width; x += 1 + Offset)
+            for (int x = 0; x < bitmap.Width; x += 1 + Offset)
             {
-                for (int y = 0; y < Height; y += 1 + Offset)
+                for (int y = 0; y < bitmap.Height; y += 1 + Offset)
                 {
                     if (IsPixelMarked(bitmap, x, y))
                     {
