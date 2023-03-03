@@ -17,6 +17,9 @@ namespace SitronicsTest
             Offset = offset;
         }
 
+        //Function search laser spot on bitmap and returns center coordinate of the spot or null value
+        //if there is no laser spot. To reduce the search time it is using the offset parameter, that
+        //defines distance between the points to be checked. 
         public Coordinate? FindHitCenter(Bitmap bitmap)
         {
             for (int x = 0; x < Width; x += 1 + Offset)
@@ -27,7 +30,7 @@ namespace SitronicsTest
                     {
                         IEnumerable<Coordinate> markeredPixels = FindMarkeredInArea(bitmap, x, y);
 
-                        return CalculateAvarageCoordinates(markeredPixels);
+                        return CalculateCenterCoordinate(markeredPixels);
                     }
                 }
             }
@@ -35,6 +38,8 @@ namespace SitronicsTest
             return null;
         }
 
+        //Finds the marked pixels in the area around the point on the bitmap. Search area size depends
+        //on the padding parameter.
         private IEnumerable<Coordinate> FindMarkeredInArea(Bitmap bitmap, int x, int y)
         {
             List<Coordinate> markedPixels = new();
@@ -59,7 +64,8 @@ namespace SitronicsTest
             return markedPixels;
         }
 
-        private Coordinate CalculateAvarageCoordinates(IEnumerable<Coordinate> coordinates)
+        //Finds the central coordinate of the coordinate collection.
+        private Coordinate CalculateCenterCoordinate(IEnumerable<Coordinate> coordinates)
         {
             int n = coordinates.Count();
             int x = 0;
@@ -81,6 +87,7 @@ namespace SitronicsTest
             return new(x, y);
         }
 
+        //Checks whether the pixel is marked by a laser
         private bool IsPixelMarked(Bitmap bitmap, int x, int y)
         {
             Color color = bitmap.GetPixel(x, y);
